@@ -106,7 +106,7 @@ ROPESinR <- function (pc, par, params, ppelim, parError = FALSE, parErrorValue, 
   
   # calculate K factors (parameters should provided by users)
   K <- do.call(rbind,lapply(vg, DispersalFactorK, tBasin=tBasin, dBasin=dBasin, dwm=dwm, regionCutoff=regionCutoff))
-  
+
   # remove depth/age column
   # par <- par[,-1]
   # pc <- pc[,-1]
@@ -117,6 +117,10 @@ ROPESinR <- function (pc, par, params, ppelim, parError = FALSE, parErrorValue, 
   # define lower and upper PPE limit with data provided
   lo <- as.numeric(ppelim[,1])
   up <- as.numeric(ppelim[,2])
+  
+  # 
+  par=as.matrix(par)
+  pc=as.matrix(pc)
   
   # optionally add PAR error, range defined by parErrorValue
   if (parError) {
